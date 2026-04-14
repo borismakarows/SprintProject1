@@ -20,6 +20,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] float lowJumpMultiplier = 2f;
 
     [Header("Ground Detection")]
+    [SerializeField] bool debugMode;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
@@ -84,6 +85,8 @@ public class PlayerMovement2D : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,groundLayer);
     }
 
+    
+
     void ApplyBetterGravity()
     {
         if (rb.linearVelocityY < 0) rb.gravityScale = fallMultiplier;
@@ -91,5 +94,15 @@ public class PlayerMovement2D : MonoBehaviour
         else rb.gravityScale = defaultGravity;
     }
     #endregion
+
+    void OnDrawGizmos()
+    {
+        //debug for ground checking
+        if (debugMode && groundCheck != null)
+        {
+           Gizmos.color = isGrounded ? Color.green : Color.red;
+           Gizmos.DrawWireSphere(groundCheck.position,groundCheckRadius); 
+        }
+    }
 }
 
