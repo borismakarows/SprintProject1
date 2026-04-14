@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3002820030339861336}
   - component: {fileID: 3139928210361944681}
   - component: {fileID: 6687056716104902971}
+  - component: {fileID: 3982614161041487058}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -191,6 +192,7 @@ MonoBehaviour:
   velPow: 0.9
   jumpForce: 6
   climbSpeed: 1
+  ropeHorizontalSnap: 0.5
   defaultGravity: 1.1
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
@@ -213,6 +215,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30e90d6c1c129f49be100924fe071f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!81 &3982614161041487058
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291516681680544114}
+  m_Enabled: 1
 --- !u!1 &5818030441110322403
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +233,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1162886269276315076}
   - component: {fileID: 3222615253013699375}
-  - component: {fileID: 1169892379138867157}
   - component: {fileID: 4675957787071436677}
   m_Layer: 0
   m_Name: Main Camera
@@ -298,14 +307,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1169892379138867157
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5818030441110322403}
-  m_Enabled: 1
 --- !u!114 &4675957787071436677
 MonoBehaviour:
   m_ObjectHideFlags: 0
