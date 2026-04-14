@@ -7,7 +7,7 @@ public class PlayerMovement2D : MonoBehaviour
     [Header("Walk Stats")]
     [SerializeField] float maxSpeed = 10f;
     [SerializeField] float acc = 50f;
-    [SerializeField] float deAcc = 50f;
+    [SerializeField] float deacc = 50f;
     [SerializeField] float velPow = 0.9f;
 
     [Header("Jump Stats")]
@@ -21,14 +21,14 @@ public class PlayerMovement2D : MonoBehaviour
 
     [Header("Ground Detection")]
     [SerializeField] bool debugMode;
-    [SerializeField] Transform groundCheck;
+    [SerializeField] Transform groundCheckPos;
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
     bool isGrounded;
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Vector2 moveInput;
+    private Vector2 moveInput;
 
 
 
@@ -59,7 +59,7 @@ public class PlayerMovement2D : MonoBehaviour
         
         float speedDif = targetSpeed - rb.linearVelocityX;
        
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deAcc;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deacc;
 
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPow) * Mathf.Sign(speedDif) * Time.deltaTime;
 
@@ -82,11 +82,10 @@ public class PlayerMovement2D : MonoBehaviour
     //Do not forget to assign the ground objects' layers to ground Layer.
     void CheckGround()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheckPos.position,groundCheckRadius,groundLayer);
     }
 
-    
-
+    // Parabol wave 
     void ApplyBetterGravity()
     {
         if (rb.linearVelocityY < 0) rb.gravityScale = fallMultiplier;
@@ -98,10 +97,10 @@ public class PlayerMovement2D : MonoBehaviour
     void OnDrawGizmos()
     {
         //debug for ground checking
-        if (debugMode && groundCheck != null)
+        if (debugMode && groundCheckPos != null)
         {
            Gizmos.color = isGrounded ? Color.green : Color.red;
-           Gizmos.DrawWireSphere(groundCheck.position,groundCheckRadius); 
+           Gizmos.DrawWireSphere(groundCheckPos.position,groundCheckRadius); 
         }
     }
 }
