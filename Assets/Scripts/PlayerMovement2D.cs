@@ -14,6 +14,11 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] float jumpForce = 12f;
     bool isJumpPressed;
 
+    [Header("Rope")]
+    [SerializeField] float climbSpeed = 1f;
+    [SerializeField] float ropeHorizontalSnap = 0.2f;
+    private Transform currentRope;
+
     [Header("Gravity and Fall")]
     [SerializeField] float defaultGravity = 1f;
     [SerializeField] float fallMultiplier = 2.5f;
@@ -24,7 +29,12 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] Transform groundCheckPos;
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
+    
+    
+    [Header("Detection Conditions")]
     bool isGrounded;
+    bool isTouchingRope;
+    bool isClimbing;
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
@@ -43,24 +53,41 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void OnJump(InputValue value) => Jump(value);
 
+    public void OnInteract(InputValue value)
+    {
+        Debug.Log("Interaction Fired");
+        if (isTouchingRope) 
+        {
+            if (isClimbing) isClimbing = false;
+            else isClimbing = true;
+            Debug.Log("Touching Rope Interacted!");
+        }
+
+    }
+
     #endregion
     
     void Update()
     {
-       Walk();
-       ApplyBetterGravity();
-       CheckGround();
+        CheckGround();
+        if (isClimbing)
+        {
+            Climb();
+        }
+        else
+        {
+            Walk();
+            ApplyBetterGravity();
+        }
+       
     }
   
     #region Basic Mov.
     void Walk()
     {
         float targetSpeed = moveInput.x * maxSpeed;
-        
         float speedDif = targetSpeed - rb.linearVelocityX;
-       
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deacc;
-
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPow) * Mathf.Sign(speedDif) * Time.deltaTime;
 
         rb.AddForce(movement * Vector2.right);
@@ -76,6 +103,21 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
+    void Climb()
+    {
+        rb.gravityScale = 0f;
+        if (currentRope != null)
+        {
+            float targetX = currentRope.position.x;
+            float smoothedX = Mathf.Lerp(rb.position.x, targetX, ropeHorizontalSnap * Time.deltaTime);
+
+            rb.linearVelocity = new Vector2(0, moveInput.y * climbSpeed);
+
+            rb.position = new Vector2(smoothedX, rb.position.y);
+        }
+        
+    }
+
     #endregion
 
     #region Ground Check & Grav.
@@ -85,7 +127,7 @@ public class PlayerMovement2D : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheckPos.position,groundCheckRadius,groundLayer);
     }
 
-    // Parabol wave 
+    // Curve Fall
     void ApplyBetterGravity()
     {
         if (rb.linearVelocityY < 0) rb.gravityScale = fallMultiplier;
@@ -101,6 +143,27 @@ public class PlayerMovement2D : MonoBehaviour
         {
            Gizmos.color = isGrounded ? Color.green : Color.red;
            Gizmos.DrawWireSphere(groundCheckPos.position,groundCheckRadius); 
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Rope")) 
+        {
+            Debug.Log("Touching Rope");
+            isTouchingRope = true; 
+            currentRope = collision.transform;
+        }     
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Rope"))
+        {
+            isTouchingRope = false;
+            isClimbing = false;
+            currentRope = null;
+            rb.gravityScale = defaultGravity;
         }
     }
 }
