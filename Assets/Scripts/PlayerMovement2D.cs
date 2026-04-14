@@ -19,6 +19,9 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] float ropeHorizontalSnap = 0.2f;
     private Transform currentRope;
 
+    [Header("Swim Stats")] 
+    [SerializeField] private float swimSpeed = 10f;
+    
     [Header("Gravity and Fall")]
     [SerializeField] float defaultGravity = 1f;
     [SerializeField] float fallMultiplier = 2.5f;
@@ -35,6 +38,7 @@ public class PlayerMovement2D : MonoBehaviour
     bool isGrounded;
     bool isTouchingRope;
     bool isClimbing;
+    bool isSwimming;
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
@@ -73,6 +77,10 @@ public class PlayerMovement2D : MonoBehaviour
         if (isClimbing)
         {
             Climb();
+        }
+        else if (isSwimming)
+        {
+            Swim();
         }
         else
         {
@@ -118,6 +126,24 @@ public class PlayerMovement2D : MonoBehaviour
         
     }
 
+    void Swim()
+    {
+        rb.gravityScale = 0f;
+        float targetSpeedX = moveInput.x * swimSpeed;
+        float speedDifX = targetSpeedX - rb.linearVelocityX;
+        float accelRateX = (Mathf.Abs(targetSpeedX) > 0.01f) ? acc : deacc;
+        float movementX = Mathf.Pow(Mathf.Abs(speedDifX) * accelRateX, velPow) * Mathf.Sign(speedDifX) * Time.deltaTime;
+
+        rb.AddForce(movementX * Vector2.right);
+        
+        float targetSpeedY = moveInput.y * swimSpeed;
+        float speedDifY = targetSpeedY - rb.linearVelocityY;
+        float accelRateY = (Mathf.Abs(targetSpeedY) > 0.01f) ? acc : deacc;
+        float movementY = Mathf.Pow(Mathf.Abs(speedDifY) * accelRateY, velPow) * Mathf.Sign(speedDifY) * Time.deltaTime;
+
+        rb.AddForce(movementY * Vector2.up);
+    }
+
     #endregion
 
     #region Ground Check & Grav.
@@ -153,7 +179,13 @@ public class PlayerMovement2D : MonoBehaviour
             Debug.Log("Touching Rope");
             isTouchingRope = true; 
             currentRope = collision.transform;
-        }     
+        }
+
+        if (collision.CompareTag("Water"))
+        {
+            Debug.Log("Touching Water");
+            isSwimming = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -163,6 +195,12 @@ public class PlayerMovement2D : MonoBehaviour
             isTouchingRope = false;
             isClimbing = false;
             currentRope = null;
+            rb.gravityScale = defaultGravity;
+        }
+
+        if (collision.CompareTag("Water"))
+        {
+            isSwimming = false;
             rb.gravityScale = defaultGravity;
         }
     }
