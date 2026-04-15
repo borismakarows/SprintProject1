@@ -44,8 +44,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [HideInInspector] Vector2 moveInput;
     
-    [Header("Music Box")]
-    [SerializeField] MusicBoxController musicboxCtr;
+    [Header("Input Condition")]
     [HideInInspector] public bool isAnyInputFired;
 
 
@@ -106,7 +105,6 @@ public class PlayerMovement2D : MonoBehaviour
 
 
     #endregion
-
 
     #region Basic Movement
     void Walk()
