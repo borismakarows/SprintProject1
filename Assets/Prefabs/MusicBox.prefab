@@ -152,6 +152,8 @@ MonoBehaviour:
   musicTimerRandomizer: 0.25
   baseMoveWindowTimer: 8
   moveTimerRandomizer: 0.4
+  musicStartWarningDuration: 1.5
+  musicStopWarningDuration: 0.25
 --- !u!61 &1747470478766619603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -31.009953, y: -1.896028}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -196,7 +198,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6974945, y: 11.6754675}
   m_EdgeRadius: 0
 --- !u!1 &6021986522509076822
 GameObject:

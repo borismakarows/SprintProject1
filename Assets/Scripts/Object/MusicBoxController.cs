@@ -17,8 +17,8 @@ public class MusicBoxController : MonoBehaviour
     [SerializeField] float musicTimerRandomizer = 0.1f;
     [SerializeField] float baseMoveWindowTimer = 0.5f;
     [SerializeField] float moveTimerRandomizer = 0.1f;
-    [SerializeField] float musicStartWarningDuration = 1.5f;
-    [SerializeField] float musicStopWarningDuration = 1.0f;
+    [SerializeField] float musicStartWarningDuration = 1.0f;
+    [SerializeField] float musicStopWarningDuration = 0.25f;
 
     bool isPaused;
 
@@ -125,8 +125,12 @@ public class MusicBoxController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        playerRef = collision.GetComponent<PlayerMovement2D>();
-        StartMusicBoxGame();
+        if (collision.CompareTag("Player"))
+        {
+            playerRef = collision.GetComponent<PlayerMovement2D>();
+            StartMusicBoxGame(); 
+        }
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -3495,30 +3495,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Size.x
-      value: 0.6974945
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Size.y
-      value: 11.6754675
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Offset.x
-      value: -31.009953
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.896028
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594595431712956573, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: musicStopWarningDuration
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594595431712956573, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: musicStartWarningDuration
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4784916098393456611, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
       propertyPath: m_Name
       value: MusicBox
@@ -3578,7 +3554,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.84
+      value: 3.97
       objectReference: {fileID: 0}
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalPosition.y
