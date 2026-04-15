@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Carrot
   - Rope
-  - InMusicArea
   - Water
+  - MusicBox
   layers:
   - Default
   - TransparentFX

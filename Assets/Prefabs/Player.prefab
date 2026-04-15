@@ -193,6 +193,7 @@ MonoBehaviour:
   jumpForce: 6
   climbSpeed: 1
   ropeHorizontalSnap: 0.5
+  swimSpeed: 10
   defaultGravity: 1.1
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
@@ -250,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 5818030441110322403}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.93, y: 0.46, z: -10}
+  m_LocalPosition: {x: 3.2, y: 0.46, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
