@@ -10,6 +10,8 @@ TagManager:
   - MusicBox
   - Sprite
   - Box
+  - WalkthroughFloor
+  - cloud
   layers:
   - Default
   - TransparentFX

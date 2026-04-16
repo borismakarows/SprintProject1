@@ -40,7 +40,6 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] float climbSpeed = 1f;
     [SerializeField] float ropeHorizontalSnap = 0.2f;
     private Transform currentRope;
-    [SerializeField] GameObject floor_parent;
 
     [Header("Swim Stats")] 
     [SerializeField] private float swimSpeed = 10f;
@@ -205,17 +204,13 @@ public class PlayerMovement2D : MonoBehaviour
     {
         isClimbing = currState;
         rb.gravityScale = currState ? 0 : defaultGravity;
-
-        if (floor_parent != null)
-        {
-            Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
+            GameObject[] floors = GameObject.FindGameObjectsWithTag("WalkthroughFloor");
             Collider2D playerCol = GetComponent<Collider2D>();
-            foreach (Collider2D floor in floors)
+            foreach (GameObject floor in floors)
             {
-                Physics2D.IgnoreCollision(playerCol, floor, currState);
+                Collider2D floorCol = floor.GetComponent<Collider2D>();
+                Physics2D.IgnoreCollision(playerCol, floorCol, currState);
             }
-        }
-        
         if (!currState) rb.linearVelocity = new Vector2(rb.linearVelocityX, 0);
     }
 
@@ -303,13 +298,10 @@ public class PlayerMovement2D : MonoBehaviour
             isClimbing = false;
             currentRope = null;
             rb.gravityScale = defaultGravity;
-            if (floor_parent != null)
+            GameObject[] floors = GameObject.FindGameObjectsWithTag("WalkthroughFloor");
+            foreach (GameObject floor in floors)
             {
-                Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
-                foreach (Collider2D floor in floors)
-                {
-                    Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor, false);
-                }
+                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor.GetComponent<Collider2D>(), false);
             }
         }
 

@@ -9,7 +9,7 @@ public class FishMove2D : MonoBehaviour
     [SerializeField] float magnitude = 0.5f;
 
     [Header("Route & Vision")]
-    private bool isChasing = false; // UNUSED      //fish chases player
+    private bool isChasing = false;
     private Vector3 startPosition;
     private Quaternion startRotation;
     private float startRoute = 0f;
@@ -21,6 +21,7 @@ public class FishMove2D : MonoBehaviour
     [SerializeField] float viewAngle = 45f; // Total cone is 90 degrees (45 each way)
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
+    private SpriteRenderer sprite;
     
     
     
@@ -35,7 +36,6 @@ public class FishMove2D : MonoBehaviour
         if (CanSeePlayer())
         {
             isChasing = true;
-            //LookAtPlayer();
         }
         else
         {
@@ -51,6 +51,7 @@ public class FishMove2D : MonoBehaviour
         player =  GameObject.FindGameObjectWithTag("Player");
         startPosition = transform.position;
         startRotation = transform.rotation;
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         initRoute();
     }
     void initRoute()
@@ -74,14 +75,11 @@ public class FishMove2D : MonoBehaviour
     }
     
     void ReturnToRoute() {
-        // 1. Smoothly rotate back to the original "Left-to-Right" rotation
         transform.rotation = Quaternion.Lerp(transform.rotation, startRotation, Time.deltaTime * 2f);
 
-        // 2. If you want it to return to its original "Lane" (Y-position)
         Vector3 targetPos = new Vector3(transform.position.x, startPosition.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        // 3. Check if we are "close enough" to consider the recalibration done
         if (Quaternion.Angle(transform.rotation, startRotation) < 1f) {
             isChasing = false; 
         }
@@ -94,10 +92,12 @@ public class FishMove2D : MonoBehaviour
             //change directions
             if (transform.position.x > endRoute)
             {
+                sprite.flipY = true;
                 transform.rotation = Quaternion.Euler(0, 0, 180);
             }
             else if (transform.position.x < startRoute)
             {
+                sprite.flipY = false;
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
@@ -117,19 +117,13 @@ public class FishMove2D : MonoBehaviour
         foreach (var target in targetsInViewRadius) {
             Vector3 dirToTarget = (target.transform.position - transform.position).normalized;
     
-            // 1. Is it in the cone?
             if (Vector3.Angle(transform.right, dirToTarget) < viewAngle / 2) {
                 float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
 
-                // Put this inside your "if in cone" check
                 Debug.DrawRay(transform.position, dirToTarget * distanceToTarget, Color.red);
-                // 2. Fire a Raycast toward the target
-                // We use a LayerMask that includes BOTH the Player and the Obstacles (Walls)
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToTarget, distanceToTarget, obstructionMask);
 
                 if (hit.collider != null) {
-                    // 3. Did we hit the Player? 
-                    // (If we hit a wall first, hit.collider will be the Wall)
                     if (hit.collider.CompareTag("Player")) {
                         Debug.Log("I see the player directly!");
                         return true;
