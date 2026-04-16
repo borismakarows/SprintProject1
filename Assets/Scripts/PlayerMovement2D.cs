@@ -68,36 +68,26 @@ public class PlayerMovement2D : MonoBehaviour
     //Checking for music boxg game
     private void CheckIsPressing()
     {
-        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0) {isAnyInputFired = true;}
-        else {isAnyInputFired = false;}
-        if (isTouchingRope) 
+        isAnyInputFired = (Mathf.Abs(moveInput.x) > 0.01f || Mathf.Abs(moveInput.y) > 0.01f || isJumpPressed) ? true : false;
+        
+    }
+
+    private void ToggleClimbing(bool currState)
+    {
+        isClimbing = currState;
+        rb.gravityScale = currState ? 0 : defaultGravity;
+
+        if (floor_parent != null)
         {
-            if (isClimbing)
+            Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
+            Collider2D playerCol = GetComponent<Collider2D>();
+            foreach (Collider2D floor in floors)
             {
-                isClimbing = false;
-                if (floor_parent != null)
-                {
-                    Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
-                    foreach (Collider2D floor in floors)
-                    {
-                        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor, false);
-                    }
-                }
-            }
-            else
-            {
-                isClimbing = true;
-                if (floor_parent != null)
-                {
-                    Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
-                    foreach (Collider2D floor in floors)
-                    {
-                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), floor, true);
-                    }
-                }
+                Physics2D.IgnoreCollision(playerCol, floor, currState);
             }
         }
-
+        
+        if (!currState) rb.linearVelocity = new Vector2(rb.linearVelocityX, 0);
     }
 
     private void InputStateCheck()
@@ -106,15 +96,15 @@ public class PlayerMovement2D : MonoBehaviour
         {
             Climb();
         }
-        else if (isSwimming)
-        {
-            Swim();
-        }
         else
         {
             Walk();
             ApplyBetterGravity();
+            if (!isSwimming) rb.gravityScale = defaultGravity; 
+
         }
+        if (isSwimming) Swim();
+        
     }
 
     #region Input Messages
@@ -125,14 +115,10 @@ public class PlayerMovement2D : MonoBehaviour
 
     public void OnInteract(InputValue value)
     {
-        Debug.Log("Interaction Fired");
-        isAnyInputFired = value.isPressed;
-        isClimbing = value.isPressed;
-        if (isTouchingRope && value.isPressed) 
+        if (value.isPressed && isTouchingRope)
         {
-            if (isClimbing) isClimbing = false;
-            else isClimbing = true;
-            Debug.Log("Touching Rope Interacted!");
+            ToggleClimbing(!isClimbing);
+            Debug.Log("Climbing Toggled: " + isClimbing);
         }
     }
 
@@ -170,6 +156,7 @@ public class PlayerMovement2D : MonoBehaviour
         if (currentRope != null)
         {
             float targetX = currentRope.position.x;
+            //player moves to the center of the rope
             float smoothedX = Mathf.Lerp(rb.position.x, targetX, ropeHorizontalSnap * Time.deltaTime);
 
             rb.linearVelocity = new Vector2(0, moveInput.y * climbSpeed);
