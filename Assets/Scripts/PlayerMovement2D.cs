@@ -2,13 +2,29 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum Room
+{
+    TeenHouse,
+    BunnyPlushie,
+    MusicBox,
+    Piranhas
+}
+
+public enum Era
+{
+    Child,
+    Teen
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
+    [Header("Era Information")]
+    public Era currentEra = Era.Child; 
+
     // Do not forget to set them true when entering a room
     [Header("Room Information")]
-    public bool isInBunnyRoom = false;
-    public bool isInMusicBoxRoom = false;
+    public Room currentRoom = Room.TeenHouse;
 
     [Header("Walk Stats")]
     [SerializeField] float maxSpeed = 10f;
@@ -87,8 +103,6 @@ public class PlayerMovement2D : MonoBehaviour
         isMoving = (Mathf.Abs(rb.linearVelocityX) > 0.01f || Mathf.Abs(rb.linearVelocityY) > 0.01f || isJumping) ? true : false;
     }
     
-    
-
     private void CheckInputState()
     {
         if (isClimbing)
@@ -127,9 +141,8 @@ public class PlayerMovement2D : MonoBehaviour
     #region Basic Movement
     void Walk()
     {
-        if (moveInput.x > 0) {sprite.flipX = true;}
-        else if (moveInput.x < 0) {sprite.flipX = false;}
-     
+       SpriteFlip();
+       
         float targetSpeed = moveInput.x * maxSpeed;
         float speedDif = targetSpeed - rb.linearVelocityX;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deacc;
@@ -138,10 +151,17 @@ public class PlayerMovement2D : MonoBehaviour
         rb.AddForce(movement * Vector2.right);
     }
 
+    private void SpriteFlip()
+    {
+        if (moveInput.x > 0) {sprite.flipX = true;}
+        else if (moveInput.x < 0) {sprite.flipX = false;} 
+    }
+
     void Jump(InputValue jumpValue)
     {
         //Player cannot jump if it is not in a jumpable room   
-        if (isInBunnyRoom || isInMusicBoxRoom) 
+        bool isInMiniGame = currentRoom == Room.BunnyPlushie || currentRoom == Room.MusicBox;
+        if (isInMiniGame && currentEra == Era.Child) 
         {
             isJumping = jumpValue.isPressed;
             if (isJumping && isGrounded)
@@ -149,9 +169,9 @@ public class PlayerMovement2D : MonoBehaviour
                 JumpFunc();
                 isGrounded = false;
             }  
-        
-        } 
-        else {Debug.Log("Can't Jump: Not in a room");}
+        }
+        else 
+        {Debug.Log("Can't jump because: 1.Not in a room or \n2.you are teen: Everyone knows teens do not jump but lowkey wants. c'mon buddy, no need to cry.");}
         
     }
 
@@ -222,8 +242,6 @@ public class PlayerMovement2D : MonoBehaviour
     void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckPos.position,groundCheckRadius,groundLayer);
-
-        if (isGrounded && rb.linearVelocityY <= 0.01f) {isJumping = false;}
     }
 
     // Curve Fall
@@ -253,7 +271,7 @@ public class PlayerMovement2D : MonoBehaviour
     }
     #endregion
 
-    #region Triggers and Collisions
+    #region Triggers 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Rope")) 
@@ -307,6 +325,9 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
+    #endregion
+    
+    #region Collisions
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Box"))

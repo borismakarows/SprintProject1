@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cc1118fcd0eb94dbd619d4942e5912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  isInBunnyRoom: 0
-  isInMusicBoxRoom: 0
+  currentEra: 1
+  currentRoom: 1
   maxSpeed: 5
   acc: 6
   deacc: 1.5

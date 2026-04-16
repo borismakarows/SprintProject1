@@ -27,15 +27,16 @@ public class AnimationController : MonoBehaviour
 
     private void Update()
     {
-        RoomCheck();
         UpdateWalkAnimation();
         UpdateJumpAnimation();
     }
 
     private void RoomCheck()
     {
-        animator.SetBool("InBunnyRoom", playerRef.isInBunnyRoom);
-        animator.SetBool("InMusicRoom", playerRef.isInMusicBoxRoom);
+        animator.SetBool("InBunnyRoom", playerRef.currentRoom == Room.BunnyPlushie);
+        animator.SetBool("InMusicRoom", playerRef.currentRoom == Room.MusicBox);
+        bool freeFall = playerRef.currentRoom == Room.TeenHouse || playerRef.currentRoom == Room.Piranhas;
+        animator.SetBool("FreeFall", freeFall && playerRef.currentEra == Era.Child);
     }
 
     private void UpdateWalkAnimation()
@@ -46,6 +47,7 @@ public class AnimationController : MonoBehaviour
 
     private void UpdateJumpAnimation()
     {
+        RoomCheck();
         animator.SetBool("Ground", playerRef.isGrounded);
         animator.SetBool("Jumping", playerRef.isJumping);
         wasGroundedLastFrame = playerRef.isGrounded;
