@@ -18,6 +18,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] float climbSpeed = 1f;
     [SerializeField] float ropeHorizontalSnap = 0.2f;
     private Transform currentRope;
+    [SerializeField] GameObject floor_parent;
 
     [Header("Swim Stats")] 
     [SerializeField] private float swimSpeed = 10f;
@@ -69,6 +70,36 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0) {isAnyInputFired = true;}
         else {isAnyInputFired = false;}
+        Debug.Log("Interaction Fired");
+        if (isTouchingRope) 
+        {
+            if (isClimbing)
+            {
+                isClimbing = false;
+                if (floor_parent != null)
+                {
+                    Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
+                    foreach (Collider2D floor in floors)
+                    {
+                        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor, false);
+                    }
+                }
+            }
+            else
+            {
+                isClimbing = true;
+                if (floor_parent != null)
+                {
+                    Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
+                    foreach (Collider2D floor in floors)
+                    {
+                        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor, true);
+                    }
+                }
+            }
+            Debug.Log("Touching Rope Interacted!");
+        }
+
     }
 
     private void InputStateCheck()
@@ -204,6 +235,7 @@ public class PlayerMovement2D : MonoBehaviour
             Debug.Log("Touching Rope");
             isTouchingRope = true; 
             currentRope = collision.transform;
+
         }
 
         if (collision.CompareTag("Water"))
@@ -222,6 +254,14 @@ public class PlayerMovement2D : MonoBehaviour
             isClimbing = false;
             currentRope = null;
             rb.gravityScale = defaultGravity;
+            if (floor_parent != null)
+            {
+                Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
+                foreach (Collider2D floor in floors)
+                {
+                    Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor, false);
+                }
+            }
         }
 
         if (collision.CompareTag("Water"))
