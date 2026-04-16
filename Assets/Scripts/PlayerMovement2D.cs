@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     [Header("Jump Stats")]
     [SerializeField] float jumpForce = 12f;
-    bool isJumpPressed;
+    bool isJumping;
 
     [Header("Rope")]
     [SerializeField] float climbSpeed = 1f;
@@ -35,11 +36,12 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     
     [Header("Detection Conditions")]
-    bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     bool isTouchingRope;
     bool isClimbing;
     bool isSwimming;
     bool canPush = true;
+    
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
@@ -47,7 +49,7 @@ public class PlayerMovement2D : MonoBehaviour
     private SpriteRenderer sprite;
     
     [Header("Input")]
-    [HideInInspector] public bool isAnyInputFired;
+    [HideInInspector] public bool isMoving;
     Vector2 moveInput;
 
 
@@ -66,40 +68,23 @@ public class PlayerMovement2D : MonoBehaviour
     #region Unity funcs
     void Update()
     {
-        CheckIsPressing();
+        CheckAnyMoveInputs();
         CheckGround();
-        InputStateCheck();
+        CheckInputState();
     }
     #endregion
     
    
     #region  Input
     //Checking for music boxg game
-    private void CheckIsPressing()
+    private void CheckAnyMoveInputs()
     {
-        isAnyInputFired = (Mathf.Abs(moveInput.x) > 0.01f || Mathf.Abs(moveInput.y) > 0.01f || isJumpPressed) ? true : false;
-        
+        isMoving = (Mathf.Abs(rb.linearVelocityX) > 0.01f || Mathf.Abs(rb.linearVelocityY) > 0.01f || isJumping) ? true : false;
     }
+    
+    
 
-    private void ToggleClimbing(bool currState)
-    {
-        isClimbing = currState;
-        rb.gravityScale = currState ? 0 : defaultGravity;
-
-        if (floor_parent != null)
-        {
-            Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
-            Collider2D playerCol = GetComponent<Collider2D>();
-            foreach (Collider2D floor in floors)
-            {
-                Physics2D.IgnoreCollision(playerCol, floor, currState);
-            }
-        }
-        
-        if (!currState) rb.linearVelocity = new Vector2(rb.linearVelocityX, 0);
-    }
-
-    private void InputStateCheck()
+    private void CheckInputState()
     {
         if (isClimbing)
         {
@@ -139,19 +124,20 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (moveInput.x > 0) {sprite.flipX = true;}
         else if (moveInput.x < 0) {sprite.flipX = false;}
+     
         float targetSpeed = moveInput.x * maxSpeed;
         float speedDif = targetSpeed - rb.linearVelocityX;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deacc;
-        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPow) * Mathf.Sign(speedDif) * Time.deltaTime;
+        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPow) * Mathf.Sign(speedDif);
 
         rb.AddForce(movement * Vector2.right);
     }
 
     void Jump(InputValue jumpValue)
     {
-        isJumpPressed = jumpValue.isPressed;
-        isAnyInputFired = jumpValue.isPressed; 
-        if (isJumpPressed && isGrounded)
+        isJumping = jumpValue.isPressed;
+        
+        if (isJumping && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX,0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -173,8 +159,25 @@ public class PlayerMovement2D : MonoBehaviour
             rb.linearVelocity = new Vector2(0, moveInput.y * climbSpeed);
 
             rb.position = new Vector2(smoothedX, rb.position.y);
+        } 
+    }
+
+    private void ToggleClimbing(bool currState)
+    {
+        isClimbing = currState;
+        rb.gravityScale = currState ? 0 : defaultGravity;
+
+        if (floor_parent != null)
+        {
+            Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
+            Collider2D playerCol = GetComponent<Collider2D>();
+            foreach (Collider2D floor in floors)
+            {
+                Physics2D.IgnoreCollision(playerCol, floor, currState);
+            }
         }
         
+        if (!currState) rb.linearVelocity = new Vector2(rb.linearVelocityX, 0);
     }
 
     void Swim()
@@ -200,13 +203,15 @@ public class PlayerMovement2D : MonoBehaviour
     void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckPos.position,groundCheckRadius,groundLayer);
+
+        if (isGrounded && rb.linearVelocityY <= 0.01f) {isJumping = false;}
     }
 
     // Curve Fall
     void ApplyBetterGravity()
     {
         if (rb.linearVelocityY < 0) rb.gravityScale = fallMultiplier;
-        else if (rb.linearVelocityY > 0 && !isJumpPressed) rb.gravityScale = lowJumpMultiplier;
+        else if (rb.linearVelocityY > 0 && !isJumping) rb.gravityScale = lowJumpMultiplier;
         else rb.gravityScale = defaultGravity;
     }
     #endregion
@@ -237,7 +242,6 @@ public class PlayerMovement2D : MonoBehaviour
             Debug.Log("Touching Rope");
             isTouchingRope = true; 
             currentRope = collision.transform;
-
         }
 
         if (collision.CompareTag("Water"))
@@ -249,7 +253,7 @@ public class PlayerMovement2D : MonoBehaviour
         if (collision.CompareTag("Box"))
         {
             canPush = false;
-            animCtr.OffPushAnimation();
+            animCtr.PushAnimationOff();
         }
         
     }
@@ -290,7 +294,7 @@ public class PlayerMovement2D : MonoBehaviour
         {
             if (!canPush) return;
             Debug.Log("Touch Box");
-            animCtr.OnPushAnimation();
+            animCtr.PushAnimationOn();
         }
     }
 
@@ -298,7 +302,7 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            animCtr.OffPushAnimation();
+            animCtr.PushAnimationOff();
         }
     }
     #endregion

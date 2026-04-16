@@ -64,7 +64,7 @@ public class MusicBoxController : MonoBehaviour
 
     private void CheckMovementDuringMusic()
     {
-        if (!isPaused && playerRef.isAnyInputFired)
+        if (!isPaused && playerRef.isMoving)
         {
             Debug.Log("Pressed Buttons, FAILED!");
             ResetMiniGame();

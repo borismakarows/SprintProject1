@@ -4,29 +4,56 @@ using UnityEngine;
 [RequireComponent(typeof(AnimationController))]
 public class AnimationController : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-     
+    [Header("Conditions")]
     [HideInInspector]  bool isPushing;
+    [HideInInspector] public bool wasGroundedLastFrame;
 
-    private void Awake() => animator = GetComponent<Animator>();
+    [Header("Components")]
+    [SerializeField] Animator animator;
+    private Rigidbody2D rb;
+    [SerializeField] PlayerMovement2D playerRef;
 
     private void OnValidate()
     {
         if (animator == null) {animator = GetComponent<Animator>();}
     }
 
-    public void TriggerJumpAnimation()
+    private void Awake() 
+    { 
+        animator = GetComponent<Animator>();
+        rb = GetComponentInParent<Rigidbody2D>();
+        playerRef = GetComponent<PlayerMovement2D>();
+    }
+
+    private void Update()
+    {
+        UpdateWalkAnimation();
+        animator.SetBool("Grounded", playerRef.isGrounded);
+    }
+
+    private void UpdateWalkAnimation()
+    {
+        animator.SetFloat("xVelocity", rb.linearVelocityX);
+        animator.SetFloat("yVelocity", rb.linearVelocityY);
+    }
+
+    private void UpdateJumpAnimation()
+    {
+        
+    }
+
+    private void TriggerJumpAnimation()
     {
         animator.SetTrigger("Jump");
     }
 
-    public void OnPushAnimation()
+    public void PushAnimationOn()
     {
         isPushing = true;
         animator.SetBool("Push",isPushing);
     }
 
-    public void OffPushAnimation()
+    public void PushAnimationOff()
     {
         isPushing = false;
         animator.SetBool("Push", isPushing);
