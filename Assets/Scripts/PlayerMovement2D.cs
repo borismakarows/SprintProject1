@@ -127,7 +127,8 @@ public class PlayerMovement2D : MonoBehaviour
     {
         Debug.Log("Interaction Fired");
         isAnyInputFired = value.isPressed;
-        if (isTouchingRope) 
+        isClimbing = value.isPressed;
+        if (isTouchingRope && value.isPressed) 
         {
             if (isClimbing) isClimbing = false;
             else isClimbing = true;
