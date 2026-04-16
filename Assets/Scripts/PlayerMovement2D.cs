@@ -48,17 +48,19 @@ public class PlayerMovement2D : MonoBehaviour
     [HideInInspector] public bool isAnyInputFired;
 
 
-    #region validation for critic comps.    
+    #region Get comps.
     void Awake() => rb = GetComponent<Rigidbody2D>();
     void OnValidate() => rb = GetComponent<Rigidbody2D>();
     #endregion
 
+    #region Unity funcs
     void Update()
     {
         CheckIsPressing();
         CheckGround();
         InputStateCheck();
     }
+    #endregion
     
    
     #region  Input
@@ -86,6 +88,7 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
+    #region Input Messages
     //Delegates(messages) from Input
     public void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
 
@@ -103,7 +106,7 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
-
+    #endregion
     #endregion
 
     #region Basic Movement
@@ -163,7 +166,6 @@ public class PlayerMovement2D : MonoBehaviour
 
         rb.AddForce(movementY * Vector2.up);
     }
-
     #endregion
 
     #region Ground Check & Grav.

@@ -20,14 +20,18 @@ public class MusicBoxController : MonoBehaviour
     [SerializeField] float musicStartWarningDuration = 1.0f;
     [SerializeField] float musicStopWarningDuration = 0.25f;
 
+    [Header("Activation")]
+    [SerializeField] bool Activate;
     bool isPaused;
 
-
+    #region Get Comps
     void Awake() => musicBoxSource = GetComponent<AudioSource>();
 
     void OnValidate() => musicBoxSource = GetComponent<AudioSource>();
-  
+    #endregion
 
+
+    #region Unity Funcs
     void Start()
     {
         DebuggingComponents();
@@ -39,14 +43,17 @@ public class MusicBoxController : MonoBehaviour
         if (playerRef == null) return;
         CheckMovementDuringMusic();
     }
+    #endregion
 
+    #region Debug
      private void DebuggingComponents()
     {
         if (musicClip == null) {Debug.Log("Music Clip is null");}
         if (startPos == null) {Debug.Log("Assign start position");}
     }
+    #endregion
 
-    
+    #region Reset & Move Checker
     public void ResetMiniGame()
     {
         if (playerRef == null) return;
@@ -63,7 +70,9 @@ public class MusicBoxController : MonoBehaviour
             ResetMiniGame();
         }
     }
+    #endregion
 
+    #region Music Control
     private void UnpauseMusic()
     {
         isPaused = false;
@@ -78,10 +87,14 @@ public class MusicBoxController : MonoBehaviour
 
     public void StartMusicBoxGame()
     {
-        StartCoroutine(StartMusicWindow());
+        StopAllCoroutines();
+        PauseMusic();
+        if (Activate)
+        {StartCoroutine(StartMusicWindow());}
     }
+    #endregion
 
-
+    #region Windows and Triggers
     private IEnumerator StartMusicWindow()
     {
         MusicStartIndicator();
@@ -112,7 +125,9 @@ public class MusicBoxController : MonoBehaviour
         yield return new WaitForSeconds(moveWindow);
         StartCoroutine(StartMusicWindow());
     }
+    #endregion
 
+    #region Indicator
     private void MusicStartIndicator()
     {
         Debug.Log("Do not Move or You are dead");
@@ -122,12 +137,15 @@ public class MusicBoxController : MonoBehaviour
     {
         Debug.Log("Music is about to stop");
     }
+    #endregion
 
+    #region Trigger & Collision
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             playerRef = collision.GetComponent<PlayerMovement2D>();
+            if (!Activate) {PauseMusic(); return;}
             StartMusicBoxGame(); 
         }
         
@@ -137,5 +155,8 @@ public class MusicBoxController : MonoBehaviour
     {
         Debug.Log("Collision: " + collision.gameObject.name);
     }
+    #endregion
 
 }
+
+
