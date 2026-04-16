@@ -8,6 +8,7 @@ public class GameStart : MonoBehaviour
     [SerializeField] private GameObject reward;
 
     private bool isGamePlayed = false;
+    private bool isGameFinished = false;
     private Transform housePlayer;
     private GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,9 +19,11 @@ public class GameStart : MonoBehaviour
 
     void Update()
     {
-        if (isGamePlayed && reward != null && reward.active == false)
+        if (isGamePlayed && !isGameFinished && reward == null)
         {
             player.transform.position = housePlayer.transform.position;
+            isGameFinished = true;
+            
         }
     }
     void OnTriggerEnter2D(Collider2D collider)
@@ -28,13 +31,16 @@ public class GameStart : MonoBehaviour
         Debug.Log(collider.gameObject.name + "is now in room");
         if (collider.tag == "Player")
         {
-            Debug.Log("yes its player");
-            player = collider.gameObject;
-            if (level != null)
+            if (!isGameFinished)
             {
-                housePlayer = collider.transform;
-                collider.gameObject.transform.position = LevelSpawn.transform.position;
-                isGamePlayed = true;
+                Debug.Log("yes its player");
+                player = collider.gameObject;
+                if (level != null)
+                {
+                    housePlayer = collider.transform;
+                    collider.gameObject.transform.position = LevelSpawn.transform.position;
+                    isGamePlayed = true;
+                }   
             }
         }
         
