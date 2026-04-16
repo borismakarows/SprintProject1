@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,8 @@ public class PlayerMovement2D : MonoBehaviour
 {
     [Header("Era Information")]
     public Era currentEra = Era.Child; 
+    public EraStats childStats;
+    public EraStats teenStats;
 
     // Do not forget to set them true when entering a room
     [Header("Room Information")]
@@ -45,7 +48,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private float swimSpeed = 10f;
     
     [Header("Gravity and Fall")]
-    [SerializeField] float defaultGravity = 1f;
+    [SerializeField] float defaultGravityScale = 1f;
     [SerializeField] float fallMultiplier = 2.5f;
     [SerializeField] float lowJumpMultiplier = 2f;
 
@@ -86,6 +89,11 @@ public class PlayerMovement2D : MonoBehaviour
     #endregion
 
     #region Unity funcs
+    void Start()
+    {
+        SwitchEra(Era.Child);
+    }
+
     void Update()
     {
         CheckAnyMoveInputs();
@@ -112,7 +120,7 @@ public class PlayerMovement2D : MonoBehaviour
         {
             Walk();
             ApplyBetterGravity();
-            if (!isSwimming) rb.gravityScale = defaultGravity; 
+            if (!isSwimming) rb.gravityScale = defaultGravityScale; 
 
         }
         if (isSwimming) Swim();
@@ -141,7 +149,7 @@ public class PlayerMovement2D : MonoBehaviour
     void Walk()
     {
        SpriteFlip();
-       
+
         float targetSpeed = moveInput.x * maxSpeed;
         float speedDif = targetSpeed - rb.linearVelocityX;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deacc;
@@ -203,7 +211,7 @@ public class PlayerMovement2D : MonoBehaviour
     private void ToggleClimbing(bool currState)
     {
         isClimbing = currState;
-        rb.gravityScale = currState ? 0 : defaultGravity;
+        rb.gravityScale = currState ? 0 : defaultGravityScale;
             GameObject[] floors = GameObject.FindGameObjectsWithTag("WalkthroughFloor");
             Collider2D playerCol = GetComponent<Collider2D>();
             foreach (GameObject floor in floors)
@@ -244,8 +252,54 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (rb.linearVelocityY < 0) rb.gravityScale = fallMultiplier;
         else if (rb.linearVelocityY > 0 && !isJumping) rb.gravityScale = lowJumpMultiplier;
-        else rb.gravityScale = defaultGravity;
+        else rb.gravityScale = defaultGravityScale;
     }
+    #endregion
+    
+    #region Era Control
+    public void SwitchEra(Era newEra)
+    {
+        currentEra = newEra;
+        
+        if (newEra == Era.Child)
+        {SwitchToChild();}
+        else {SwitchToTeen();}
+    }
+
+    private void SwitchToChild()
+    {
+        currentEra = Era.Child;
+        //Movement
+        maxSpeed = childStats.maxSpeed;
+        acc = childStats.acc;
+        deacc = childStats.deacc;
+        velPow = childStats.velPow;
+        //Verticality
+        fallMultiplier = childStats.fallMultiplier;
+        lowJumpMultiplier = childStats.lowJumpMultiplier;
+        climbSpeed = childStats.climbSpeed;
+        defaultGravityScale = childStats.gravityScale;
+        //Animation
+        animCtr.ChangeRunTimeAnimator(childStats.animator);
+    }
+    
+        private void SwitchToTeen()
+    {
+        currentEra = Era.Teen;
+        //Movement
+        maxSpeed = teenStats.maxSpeed;
+        acc = teenStats.acc;
+        deacc = teenStats.deacc;
+        velPow = teenStats.velPow;
+        //Verticality
+        fallMultiplier = teenStats.fallMultiplier;
+        lowJumpMultiplier = teenStats.lowJumpMultiplier;
+        climbSpeed = teenStats.climbSpeed;
+        defaultGravityScale = teenStats.gravityScale;
+        //Animation
+        animCtr.ChangeRunTimeAnimator(teenStats.animator);
+    }
+    
     #endregion
 
     #region Debugging
@@ -297,7 +351,7 @@ public class PlayerMovement2D : MonoBehaviour
             isTouchingRope = false;
             isClimbing = false;
             currentRope = null;
-            rb.gravityScale = defaultGravity;
+            rb.gravityScale = defaultGravityScale;
             GameObject[] floors = GameObject.FindGameObjectsWithTag("WalkthroughFloor");
             foreach (GameObject floor in floors)
             {
@@ -308,7 +362,7 @@ public class PlayerMovement2D : MonoBehaviour
         if (collision.CompareTag("Water"))
         {
             isSwimming = false;
-            rb.gravityScale = defaultGravity;
+            rb.gravityScale = defaultGravityScale;
         }
         
         if (collision.CompareTag("Box"))

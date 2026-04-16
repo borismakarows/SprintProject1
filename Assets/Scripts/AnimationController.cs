@@ -65,4 +65,13 @@ public class AnimationController : MonoBehaviour
         animator.SetBool("Push", isPushing);
     }
 
+    public void ChangeRunTimeAnimator(RuntimeAnimatorController newAnimatorCtr)
+    {
+        if (newAnimatorCtr != null)
+        {
+            animator.runtimeAnimatorController = newAnimatorCtr; 
+            Debug.Log("Era Animation Changed to: " + newAnimatorCtr.name);
+        }
+       
+    }
 }

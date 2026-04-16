@@ -186,7 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   currentEra: 1
-  currentRoom: 1
+  childStats: {fileID: 11400000, guid: 1e03c3e10abb2c647ba5ff4b9c856ec9, type: 2}
+  teenStats: {fileID: 11400000, guid: 4e6fcab0e25f83b488db750043d61bac, type: 2}
+  currentRoom: 0
   maxSpeed: 5
   acc: 6
   deacc: 1.5
@@ -195,9 +197,8 @@ MonoBehaviour:
   isJumping: 0
   climbSpeed: 1
   ropeHorizontalSnap: 1.5
-  floor_parent: {fileID: 0}
   swimSpeed: 3.5
-  defaultGravity: 1
+  defaultGravityScale: 1
   fallMultiplier: 3
   lowJumpMultiplier: 2.5
   debugMode: 1
