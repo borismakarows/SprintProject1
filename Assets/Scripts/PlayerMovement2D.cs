@@ -43,23 +43,31 @@ public class PlayerMovement2D : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
-    private Vector2 moveInput;
-
+    [HideInInspector] Vector2 moveInput;
+    
+    [Header("Input Condition")]
+    [HideInInspector] public bool isAnyInputFired;
 
 
     #region validation for critic comps.    
     void Awake() => rb = GetComponent<Rigidbody2D>();
     void OnValidate() => rb = GetComponent<Rigidbody2D>();
     #endregion
-    
-    //Delegates(messages) from Input
-    #region  Input
-    public void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
 
-    public void OnJump(InputValue value) => Jump(value);
-
-    public void OnInteract(InputValue value)
+    void Update()
     {
+        CheckIsPressing();
+        CheckGround();
+        InputStateCheck();
+    }
+    
+   
+    #region  Input
+    //Checking for music boxg game
+    private void CheckIsPressing()
+    {
+        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0) {isAnyInputFired = true;}
+        else {isAnyInputFired = false;}
         Debug.Log("Interaction Fired");
         if (isTouchingRope) 
         {
@@ -92,11 +100,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     }
 
-    #endregion
-    
-    void Update()
+    private void InputStateCheck()
     {
-        CheckGround();
         if (isClimbing)
         {
             Climb();
@@ -110,10 +115,29 @@ public class PlayerMovement2D : MonoBehaviour
             Walk();
             ApplyBetterGravity();
         }
-       
     }
-  
-    #region Basic Mov.
+
+    //Delegates(messages) from Input
+    public void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
+
+    public void OnJump(InputValue value) => Jump(value);
+
+    public void OnInteract(InputValue value)
+    {
+        Debug.Log("Interaction Fired");
+        isAnyInputFired = value.isPressed;
+        if (isTouchingRope) 
+        {
+            if (isClimbing) isClimbing = false;
+            else isClimbing = true;
+            Debug.Log("Touching Rope Interacted!");
+        }
+    }
+
+
+    #endregion
+
+    #region Basic Movement
     void Walk()
     {
         float targetSpeed = moveInput.x * maxSpeed;
@@ -127,12 +151,16 @@ public class PlayerMovement2D : MonoBehaviour
     void Jump(InputValue jumpValue)
     {
         isJumpPressed = jumpValue.isPressed;
+        isAnyInputFired = jumpValue.isPressed; 
         if (isJumpPressed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX,0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
+    #endregion
+
+    #region Extra Movements
 
     void Climb()
     {
@@ -185,6 +213,7 @@ public class PlayerMovement2D : MonoBehaviour
     }
     #endregion
 
+    #region Debugging
     void OnDrawGizmos()
     {
         //debug for ground checking
@@ -194,7 +223,9 @@ public class PlayerMovement2D : MonoBehaviour
            Gizmos.DrawWireSphere(groundCheckPos.position,groundCheckRadius); 
         }
     }
+    #endregion
 
+    #region Triggers and Collisions
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Rope")) 
@@ -210,6 +241,7 @@ public class PlayerMovement2D : MonoBehaviour
             Debug.Log("Touching Water");
             isSwimming = true;
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -236,5 +268,6 @@ public class PlayerMovement2D : MonoBehaviour
             rb.gravityScale = defaultGravity;
         }
     }
+    #endregion
 }
 

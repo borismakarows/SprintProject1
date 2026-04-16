@@ -391,14 +391,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: fish (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8840256721180226314, guid: 30c383a18264ed64db6689914013aefc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5.225181
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840256721180226314, guid: 30c383a18264ed64db6689914013aefc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.7845
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -630,11 +622,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.12
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.05
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1005,14 +997,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: fish
       objectReference: {fileID: 0}
-    - target: {fileID: 8840256721180226314, guid: 30c383a18264ed64db6689914013aefc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.1307735
-      objectReference: {fileID: 0}
-    - target: {fileID: 8840256721180226314, guid: 30c383a18264ed64db6689914013aefc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.8312
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1027,5 +1011,5 @@ SceneRoots:
   - {fileID: 575921336}
   - {fileID: 2075699070}
   - {fileID: 1301371697}
-  - {fileID: 1674439183}
   - {fileID: 1611849159}
+  - {fileID: 1674439183}
