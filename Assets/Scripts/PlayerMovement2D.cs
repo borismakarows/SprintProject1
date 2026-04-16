@@ -70,7 +70,6 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0) {isAnyInputFired = true;}
         else {isAnyInputFired = false;}
-        Debug.Log("Interaction Fired");
         if (isTouchingRope) 
         {
             if (isClimbing)
@@ -93,11 +92,10 @@ public class PlayerMovement2D : MonoBehaviour
                     Collider2D[] floors = floor_parent.GetComponentsInChildren<Collider2D>();
                     foreach (Collider2D floor in floors)
                     {
-                        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor, true);
+                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), floor, true);
                     }
                 }
             }
-            Debug.Log("Touching Rope Interacted!");
         }
 
     }
