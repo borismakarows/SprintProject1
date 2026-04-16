@@ -22,29 +22,26 @@ public class AnimationController : MonoBehaviour
     { 
         animator = GetComponent<Animator>();
         rb = GetComponentInParent<Rigidbody2D>();
-        playerRef = GetComponent<PlayerMovement2D>();
+        playerRef = GetComponentInParent<PlayerMovement2D>();
     }
 
     private void Update()
     {
         UpdateWalkAnimation();
-        animator.SetBool("Grounded", playerRef.isGrounded);
+        UpdateJumpAnimation();
     }
 
     private void UpdateWalkAnimation()
     {
-        animator.SetFloat("xVelocity", rb.linearVelocityX);
+        animator.SetFloat("xVelocityAbs", MathF.Abs(rb.linearVelocityX));
         animator.SetFloat("yVelocity", rb.linearVelocityY);
     }
 
     private void UpdateJumpAnimation()
     {
-        
-    }
-
-    private void TriggerJumpAnimation()
-    {
-        animator.SetTrigger("Jump");
+        animator.SetBool("Ground", playerRef.isGrounded);
+        animator.SetBool("Jumping", playerRef.isJumping);
+        wasGroundedLastFrame = playerRef.isGrounded;
     }
 
     public void PushAnimationOn()

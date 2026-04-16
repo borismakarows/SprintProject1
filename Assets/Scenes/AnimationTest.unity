@@ -3341,7 +3341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: climbSpeed
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: defaultGravity

@@ -13,7 +13,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     [Header("Jump Stats")]
     [SerializeField] float jumpForce = 12f;
-    bool isJumping;
+    [HideInInspector] public bool isJumping;
 
     [Header("Rope")]
     [SerializeField] float climbSpeed = 1f;
@@ -136,11 +136,11 @@ public class PlayerMovement2D : MonoBehaviour
     void Jump(InputValue jumpValue)
     {
         isJumping = jumpValue.isPressed;
-        
         if (isJumping && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX,0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
         }
     }
     #endregion
