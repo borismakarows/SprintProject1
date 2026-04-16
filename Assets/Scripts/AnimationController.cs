@@ -27,8 +27,15 @@ public class AnimationController : MonoBehaviour
 
     private void Update()
     {
+        RoomCheck();
         UpdateWalkAnimation();
         UpdateJumpAnimation();
+    }
+
+    private void RoomCheck()
+    {
+        animator.SetBool("InBunnyRoom", playerRef.isInBunnyRoom);
+        animator.SetBool("InMusicRoom", playerRef.isInMusicBoxRoom);
     }
 
     private void UpdateWalkAnimation()

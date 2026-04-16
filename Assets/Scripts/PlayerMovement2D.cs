@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
+    // Do not forget to set them true when entering a room
+    [Header("Room Information")]
+    public bool isInBunnyRoom = false;
+    public bool isInMusicBoxRoom = false;
+
     [Header("Walk Stats")]
     [SerializeField] float maxSpeed = 10f;
     [SerializeField] float acc = 50f;
@@ -135,14 +140,28 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Jump(InputValue jumpValue)
     {
-        isJumping = jumpValue.isPressed;
-        if (isJumping && isGrounded)
+        //Player cannot jump if it is not in a jumpable room   
+        if (isInBunnyRoom || isInMusicBoxRoom) 
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocityX,0);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
-        }
+            isJumping = jumpValue.isPressed;
+            if (isJumping && isGrounded)
+            {
+                JumpFunc();
+                isGrounded = false;
+            }  
+        
+        } 
+        else {Debug.Log("Can't Jump: Not in a room");}
+        
     }
+
+    void JumpFunc()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocityX,0);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        
+    }
+
     #endregion
 
     #region Extra Movements

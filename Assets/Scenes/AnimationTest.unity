@@ -3316,68 +3316,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: acc
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: deacc
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: velPow
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: maxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: jumpForce
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: swimSpeed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: climbSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: defaultGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: fallMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: lowJumpMultiplier
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3139928210361944681, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: ropeHorizontalSnap
-      value: 1.5
+      propertyPath: isInBunnyRoom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4291516681680544114, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506786803429188068, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7902889
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506786803429188068, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: m_Size.y
-      value: 2.5058608
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506786803429188068, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.069052696
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506786803429188068, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.09589815
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
