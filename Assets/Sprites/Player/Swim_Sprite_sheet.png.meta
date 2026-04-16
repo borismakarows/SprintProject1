@@ -116,8 +116,8 @@ TextureImporter:
         y: 488
         width: 311
         height: 117
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,8 +138,8 @@ TextureImporter:
         y: 479
         width: 272
         height: 183
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -156,12 +156,12 @@ TextureImporter:
       name: Swim_Sprite_sheet_2
       rect:
         serializedVersion: 2
-        x: 976
-        y: 395
+        x: 984
+        y: 458
         width: 312
-        height: 486
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 232
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,33 +174,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Swim_Sprite_sheet_3
-      rect:
-        serializedVersion: 2
-        x: 1193
-        y: 412
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b1978ee9f29fd4c0800000000000000
-      internalID: -4260525120322825800
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 041a6c8cc86c9ef4ba9056a9890ba0eb
     internalID: 0
     vertices: []
     indices: 

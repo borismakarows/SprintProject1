@@ -204,6 +204,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   rb: {fileID: 359158549255087902}
+  animCtr: {fileID: 0}
   isAnyInputFired: 0
 --- !u!114 &6687056716104902971
 MonoBehaviour:
@@ -373,7 +374,7 @@ Transform:
   m_GameObject: {fileID: 8537010916878189742}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -472,3 +473,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b4049bfcf80124d97e8717a5e05fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationController
+  animator: {fileID: 1615305304520802179}
