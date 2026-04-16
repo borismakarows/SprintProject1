@@ -9,6 +9,7 @@ TagManager:
   - Water
   - MusicBox
   - Sprite
+  - Box
   layers:
   - Default
   - TransparentFX

@@ -34,23 +34,32 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
     
-    
     [Header("Detection Conditions")]
     bool isGrounded;
     bool isTouchingRope;
     bool isClimbing;
     bool isSwimming;
+    bool canPush = true;
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
-    [HideInInspector] Vector2 moveInput;
+    [SerializeField] private AnimationController animCtr;
+    private SpriteRenderer sprite;
     
-    [Header("Input Condition")]
+    [Header("Input")]
     [HideInInspector] public bool isAnyInputFired;
+    Vector2 moveInput;
 
 
     #region Get comps.
-    void Awake() => rb = GetComponent<Rigidbody2D>();
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animCtr = GetComponentInChildren<AnimationController>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        DebugComponents();
+    }
+
     void OnValidate() => rb = GetComponent<Rigidbody2D>();
     #endregion
 
@@ -128,6 +137,8 @@ public class PlayerMovement2D : MonoBehaviour
     #region Basic Movement
     void Walk()
     {
+        if (moveInput.x > 0) {sprite.flipX = true;}
+        else if (moveInput.x < 0) {sprite.flipX = false;}
         float targetSpeed = moveInput.x * maxSpeed;
         float speedDif = targetSpeed - rb.linearVelocityX;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : deacc;
@@ -186,7 +197,6 @@ public class PlayerMovement2D : MonoBehaviour
     #endregion
 
     #region Ground Check & Grav.
-    //Do not forget to assign the ground objects' layers to ground Layer.
     void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckPos.position,groundCheckRadius,groundLayer);
@@ -211,6 +221,12 @@ public class PlayerMovement2D : MonoBehaviour
            Gizmos.DrawWireSphere(groundCheckPos.position,groundCheckRadius); 
         }
     }
+
+    private void DebugComponents()
+    {
+        if (animCtr == null) {Debug.Log("Anim controller is missing!");}
+        if (sprite == null) {Debug.Log("spire render comp. is missing!");}
+    }
     #endregion
 
     #region Triggers and Collisions
@@ -228,6 +244,12 @@ public class PlayerMovement2D : MonoBehaviour
         {
             Debug.Log("Touching Water");
             isSwimming = true;
+        }
+
+        if (collision.CompareTag("Box"))
+        {
+            canPush = false;
+            animCtr.OffPushAnimation();
         }
         
     }
@@ -254,6 +276,29 @@ public class PlayerMovement2D : MonoBehaviour
         {
             isSwimming = false;
             rb.gravityScale = defaultGravity;
+        }
+        
+        if (collision.CompareTag("Box"))
+        {
+            canPush = true;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            if (!canPush) return;
+            Debug.Log("Touch Box");
+            animCtr.OnPushAnimation();
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            animCtr.OffPushAnimation();
         }
     }
     #endregion
