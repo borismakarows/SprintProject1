@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] VideoPlayer startCutsceneVideo;
     [SerializeField] GameObject cutSceneUI;
     [SerializeField] Image cutsceneFinalImage;
+    [SerializeField] private GameObject boxUI;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     public void CloseTheLetterUI()
     {
         cutSceneUI.SetActive(false);
+        boxUI.SetActive(true);
     }
     
 }

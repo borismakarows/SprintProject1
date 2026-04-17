@@ -37,6 +37,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     [Header("Jump Stats")]
     [SerializeField] float jumpForce = 12f;
+	[SerializeField] float bunnyJumpMult = 5f;
     [HideInInspector] public bool isJumping;
 
     [Header("Rope")]
@@ -187,8 +188,12 @@ public class PlayerMovement2D : MonoBehaviour
     void JumpFunc()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocityX,0);
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        
+		if(currentRoom == Room.BunnyPlushie){
+			rb.AddForce(Vector2.up * jumpForce * bunnyJumpMult, ForceMode2D.Impulse);
+        }
+		else{
+        	rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+		}        
     }
 
     #endregion
