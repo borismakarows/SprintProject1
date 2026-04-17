@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PointCounter : MonoBehaviour
 {
+    [Header("BunnyReward")] 
+    [SerializeField] private GameObject bunny;
     private int collectedCarrotNum;
 
     void Awake() => collectedCarrotNum = 0;
@@ -14,6 +16,12 @@ public class PointCounter : MonoBehaviour
             collectedCarrotNum++; 
             Debug.Log("Skor:" + collectedCarrotNum);
             Destroy(otherCol.gameObject);
+             
+
+            if (collectedCarrotNum == 6)
+            {
+                bunny.SetActive(true);
+            }
         }
     }
 }
