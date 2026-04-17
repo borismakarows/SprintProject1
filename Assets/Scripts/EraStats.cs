@@ -10,12 +10,12 @@ public class EraStats : ScriptableObject
     public float velPow;
 
     [Header("Verticality")]
-    public float jumpForce;
     public float fallMultiplier;
     public float lowJumpMultiplier;
     public float climbSpeed;
+    public float gravityScale;
 
     [Header("Animation Control")]
-    public RuntimeAnimatorController animatorOverride;
+    public RuntimeAnimatorController animator;
  
 }
