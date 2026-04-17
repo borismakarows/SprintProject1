@@ -85,7 +85,6 @@ public class MusicBoxController : MonoBehaviour
     private void PauseMusic()
     {
         isPaused = true;
-        musicBoxSource.Pause();
         musicBoxSource.Stop();
     }
 
@@ -101,9 +100,9 @@ public class MusicBoxController : MonoBehaviour
     #region Windows and Triggers
     private IEnumerator StartMusicWindow()
     {
+        PauseMusic();
         MusicStartIndicator();
         yield return new WaitForSeconds(musicStartWarningDuration);
-        if (musicBoxSource.isPlaying == false) {musicBoxSource.PlayDelayed(0.2f);}
         StartCoroutine(MusicWindow());
     }
 

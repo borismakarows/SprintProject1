@@ -1287,7 +1287,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -10.964022, y: 0.03267908}
+  m_Offset: {x: -10.25722, y: 0.03267908}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1297,7 +1297,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 17.23394, y: 0.3632574}
+  m_Size: {x: 15.8203335, y: 0.3632574}
   m_EdgeRadius: 0
 --- !u!4 &207002984 stripped
 Transform:
@@ -1707,7 +1707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &264547435
 SpriteRenderer:
   serializedVersion: 2
@@ -1776,8 +1776,8 @@ Transform:
   m_GameObject: {fileID: 264547434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72, y: -48.1, z: -4.8905}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 71.959, y: -48.219, z: -6.1921}
+  m_LocalScale: {x: 1.4419, y: 1.4419, z: 1.4419}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 261922505}
@@ -3604,6 +3604,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1162886269276315076, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162886269276315076, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162886269276315076, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162886269276315076, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162886269276315076, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.83
@@ -3643,6 +3671,10 @@ PrefabInstance:
     - target: {fileID: 1345231776535698031, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222615253013699375, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
+      propertyPath: orthographic size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4291516681680544114, guid: 5449afebb8d234748b786d5ed44fbd7d, type: 3}
       propertyPath: m_Name
@@ -5677,7 +5709,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -4.815747, y: 1.1225533}
+  m_Offset: {x: -7.468934, y: 1.538352}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5687,7 +5719,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 14.408973, y: 8.733146}
+  m_Size: {x: 19.715364, y: 9.564743}
   m_EdgeRadius: 0
 --- !u!114 &1757497393
 MonoBehaviour:
@@ -6345,49 +6377,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 264547436}
     m_Modifications:
-    - target: {fileID: 1203885633830734891, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 17.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203885633830734891, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Size.x
-      value: 0.55018616
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Size.y
-      value: 10.544022
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Offset.x
-      value: 16.355331
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747470478766619603, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_Offset.y
-      value: 2.3229446
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025384017628074286, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594595431712956573, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: Activate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594595431712956573, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: startIndictor
-      value: 
-      objectReference: {fileID: 8300000, guid: 70b36d37229514c45b95007a604eb8b8, type: 3}
-    - target: {fileID: 4594595431712956573, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
-      propertyPath: stopIndicator
-      value: 
-      objectReference: {fileID: 8300000, guid: 2b43f6f6a9eb2cc4eafb27cfef952c0c, type: 3}
     - target: {fileID: 4594595431712956573, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
       propertyPath: musicStartWarningDuration
-      value: 2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4784916098393456611, guid: a303ea32925d9f84da144b57bb47856f, type: 3}
       propertyPath: m_Name

@@ -48,7 +48,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 38f6dd0d18f4b164b9db6dc7a1e9756d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -57,8 +57,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.5
-  MaxDistance: 35
+  MinDistance: 12.852966
+  MaxDistance: 30.108727
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -167,7 +167,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -31.009953, y: -2.1301308}
+  m_Offset: {x: 16.355331, y: 2.3229446}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6974945, y: 12.143673}
+  m_Size: {x: 0.55018616, y: 10.544022}
   m_EdgeRadius: 0
 --- !u!114 &4594595431712956573
 MonoBehaviour:
@@ -193,15 +193,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   musicBoxSource: {fileID: 2025384017628074286}
   musicClip: {fileID: 8300000, guid: 38f6dd0d18f4b164b9db6dc7a1e9756d, type: 3}
-  startIndictor: {fileID: 0}
-  stopIndicator: {fileID: 0}
+  startIndictor: {fileID: 8300000, guid: 70b36d37229514c45b95007a604eb8b8, type: 3}
+  stopIndicator: {fileID: 8300000, guid: 2b43f6f6a9eb2cc4eafb27cfef952c0c, type: 3}
   startPos: {fileID: 1203885633830734891}
-  baseMusicWindowTimer: 3
+  baseMusicWindowTimer: 5
   musicTimerRandomizer: 0.25
   baseMoveWindowTimer: 8
   moveTimerRandomizer: 0.4
-  musicStartWarningDuration: 1.5
-  musicStopWarningDuration: 0.25
+  musicStartWarningDuration: 2.5
+  musicStopWarningDuration: 0.2
   Activate: 1
 --- !u!1 &6021986522509076822
 GameObject:
@@ -228,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 6021986522509076822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.37, y: -3, z: 0}
+  m_LocalPosition: {x: 17.59, y: -0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
