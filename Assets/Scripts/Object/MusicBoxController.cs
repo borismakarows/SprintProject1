@@ -8,10 +8,11 @@ public class MusicBoxController : MonoBehaviour
     [Header("Components")]
     [SerializeField] AudioSource musicBoxSource;
     [SerializeField] AudioClip musicClip;
+    [SerializeField] AudioClip startIndictor;
+    [SerializeField] AudioClip stopIndicator;
     [SerializeField] Transform startPos;
     PlayerMovement2D playerRef;
    
-    
     [Header("Parameters")]
     [SerializeField] float baseMusicWindowTimer = 0.3f;
     [SerializeField] float musicTimerRandomizer = 0.1f;
@@ -59,6 +60,7 @@ public class MusicBoxController : MonoBehaviour
         if (playerRef == null) return;
         StopAllCoroutines();
         PauseMusic();
+        musicBoxSource.Stop();
         playerRef.transform.position = startPos.position;
     }
 
@@ -76,6 +78,7 @@ public class MusicBoxController : MonoBehaviour
     private void UnpauseMusic()
     {
         isPaused = false;
+        musicBoxSource.Play();
         musicBoxSource.UnPause();
     }
 
@@ -83,6 +86,7 @@ public class MusicBoxController : MonoBehaviour
     {
         isPaused = true;
         musicBoxSource.Pause();
+        musicBoxSource.Stop();
     }
 
     public void StartMusicBoxGame()
@@ -99,6 +103,7 @@ public class MusicBoxController : MonoBehaviour
     {
         MusicStartIndicator();
         yield return new WaitForSeconds(musicStartWarningDuration);
+        if (musicBoxSource.isPlaying == false) {musicBoxSource.PlayDelayed(0.2f);}
         StartCoroutine(MusicWindow());
     }
 
@@ -130,11 +135,13 @@ public class MusicBoxController : MonoBehaviour
     #region Indicator
     private void MusicStartIndicator()
     {
+        musicBoxSource.PlayOneShot(startIndictor,1.0f);
         Debug.Log("Do not Move or You are dead");
     }
 
     private void MusicStopIndicator()
     {
+        musicBoxSource.PlayOneShot(stopIndicator, 1.0f);
         Debug.Log("Music is about to stop");
     }
     #endregion

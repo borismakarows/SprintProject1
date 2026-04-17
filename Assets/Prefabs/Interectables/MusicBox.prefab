@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8306199527127651024}
   - component: {fileID: 2025384017628074286}
-  - component: {fileID: 4594595431712956573}
   - component: {fileID: 1747470478766619603}
+  - component: {fileID: 4594595431712956573}
   m_Layer: 0
   m_Name: MusicBox
   m_TagString: MusicBox
@@ -133,28 +133,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4594595431712956573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784916098393456611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13944abace809f447a3bd0a0f00efb1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  musicBoxSource: {fileID: 2025384017628074286}
-  musicClip: {fileID: 8300000, guid: 38f6dd0d18f4b164b9db6dc7a1e9756d, type: 3}
-  startPos: {fileID: 1203885633830734891}
-  baseMusicWindowTimer: 3
-  musicTimerRandomizer: 0.25
-  baseMoveWindowTimer: 8
-  moveTimerRandomizer: 0.4
-  musicStartWarningDuration: 1.5
-  musicStopWarningDuration: 0.25
-  Activate: 0
 --- !u!61 &1747470478766619603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,6 +179,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6974945, y: 12.143673}
   m_EdgeRadius: 0
+--- !u!114 &4594595431712956573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784916098393456611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13944abace809f447a3bd0a0f00efb1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  musicBoxSource: {fileID: 2025384017628074286}
+  musicClip: {fileID: 8300000, guid: 38f6dd0d18f4b164b9db6dc7a1e9756d, type: 3}
+  startIndictor: {fileID: 0}
+  stopIndicator: {fileID: 0}
+  startPos: {fileID: 1203885633830734891}
+  baseMusicWindowTimer: 3
+  musicTimerRandomizer: 0.25
+  baseMoveWindowTimer: 8
+  moveTimerRandomizer: 0.4
+  musicStartWarningDuration: 1.5
+  musicStopWarningDuration: 0.25
+  Activate: 1
 --- !u!1 &6021986522509076822
 GameObject:
   m_ObjectHideFlags: 0
