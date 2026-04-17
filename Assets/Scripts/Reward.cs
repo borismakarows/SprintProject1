@@ -29,14 +29,14 @@ public class Reward : MonoBehaviour
     ~Reward()
     {
         Debug.Log("Reward Destroyed");
-        gameManager.gameWon();
+        gameManager.GameWon();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Player TRIGGERED");
         if (other.tag == "Player")
         {
-            gameManager.gameWon();
+            gameManager.GameWon();
         }
     }
 }

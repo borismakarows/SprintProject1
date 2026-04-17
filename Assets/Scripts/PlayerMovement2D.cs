@@ -99,11 +99,13 @@ public class PlayerMovement2D : MonoBehaviour
     {
         CheckAnyMoveInputs();
         CheckGround();
+        
     }
 
     void FixedUpdate()
     {
         CheckMoveState();
+        if (currentRoom == Room.TeenHouse) {SwitchToTeen();}
     }
 
     #endregion
@@ -433,5 +435,10 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
     #endregion
+    public void StopMovement()
+    {
+        rb.linearVelocityY = 0;
+        rb.linearVelocityX = 0;
+    }
 }
 

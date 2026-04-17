@@ -13,45 +13,41 @@ public class GameStart : MonoBehaviour
     private bool isGamePlayed = false;
     private bool isGameFinished = false;
     private Vector3 housePlayer;
-    private GameObject player;
+    [SerializeField] private GameObject player;
 	private PlayerMovement2D playerMovement;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        housePlayer = GameObject.FindGameObjectWithTag("Player").transform.position;
-    }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collider.gameObject.name + "is now in room");
-        if (collider.tag == "Player")
+        Debug.Log(collision.gameObject.name + "is now in room");
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (!isGameFinished)
             {
                 Debug.Log("yes its player");
-                player = collider.gameObject;
+                player = collision.gameObject;
                 playerMovement = player.GetComponent<PlayerMovement2D>();
                 if (level != null)
                 {
                     level.SetActive(true);
                     playerMovement.currentEra = Era.Child;
                     playerMovement.currentRoom = level_index;
-                    housePlayer = collider.gameObject.transform.position;
-                    collider.gameObject.transform.position = LevelSpawn.transform.position;
+                    housePlayer = collision.gameObject.transform.position;
+                    collision.gameObject.transform.position = LevelSpawn.transform.position;
                     isGamePlayed = true;
                 }   
             }
         }
-        
     }
-    public void gameWon()
+
+    
+    public void GameWon()
     {
 		Debug.Log(housePlayer);
         isGameFinished = true;
-        player = GameObject.FindGameObjectWithTag("Player");
 		player.transform.position = housePlayer;
-        playerMovement.currentEra = Era.Teen;
-        playerMovement.currentRoom = 0;
+        playerMovement.currentRoom = Room.TeenHouse;
+        playerMovement.StopMovement();
+        playerMovement.SwitchEra(Era.Teen);
         reward_UI.SetActive(true);
     }
 }
