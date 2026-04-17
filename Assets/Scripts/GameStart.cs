@@ -4,6 +4,8 @@ public class GameStart : MonoBehaviour
 {
     [Header("Level")]
     [SerializeField] private GameObject level;
+
+    [SerializeField] private Room level_index;
     [SerializeField] private GameObject LevelSpawn;
     [SerializeField] private GameObject reward;
 
@@ -19,12 +21,6 @@ public class GameStart : MonoBehaviour
 
     void Update()
     {
-        if (isGamePlayed && !isGameFinished && reward == null)
-        {
-            player.transform.position = housePlayer.transform.position;
-            isGameFinished = true;
-            
-        }
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -35,8 +31,12 @@ public class GameStart : MonoBehaviour
             {
                 Debug.Log("yes its player");
                 player = collider.gameObject;
+                PlayerMovement2D playerMovement = player.GetComponent<PlayerMovement2D>();
                 if (level != null)
                 {
+                    level.SetActive(true);
+                    playerMovement.currentEra = Era.Child;
+                    playerMovement.currentRoom = level_index;
                     housePlayer = collider.transform;
                     collider.gameObject.transform.position = LevelSpawn.transform.position;
                     isGamePlayed = true;
@@ -44,5 +44,11 @@ public class GameStart : MonoBehaviour
             }
         }
         
+    }
+    public void gameWon()
+    {
+        isGameFinished = true;
+        player.transform.position = housePlayer.transform.position;
+        //UI_Reward.SetActive(true);
     }
 }

@@ -11,10 +11,12 @@ public class fish_hit : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Hit");
         if (collision.gameObject.tag == "Player" && spawn != null)
         {
+            Debug.Log("Hut Player");
             collision.gameObject.transform.position = spawn.transform.position;
         }
     }

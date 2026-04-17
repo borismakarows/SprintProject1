@@ -2,49 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="170fc5c7-58a5-47d4-b754-2541dfe365bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Basement_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Basement_background.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Bedroom_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Bedroom_background.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Living_room_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Living_room_background.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Water_infront_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/Rooms/Water_infront_background.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/cloud.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/cloud.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/cloud_left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/cloud_left.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/cloud_right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/cloud_right.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/double_cloud.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/double_cloud.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/front_props.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/front_props.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/house_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/house_background.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/house_base.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/house_base.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/image0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/image0.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/overlay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/house/overlay.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SprintProject1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SprintProject1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Interectables/fish.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Interectables/fish.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/House.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FishMove2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FishMove2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/house_placeholder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/house_placeholder.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ownRoom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ownRoom.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/room1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/room1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/stairRoom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/stairRoom.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/fish_hit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/fish_hit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CloudBehav.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FishMove2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMovement2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Reward.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
@@ -108,15 +71,13 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="50004">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="50004" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
