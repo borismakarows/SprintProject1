@@ -16,9 +16,9 @@ MonoBehaviour:
   acc: 6
   deacc: 1.5
   velPow: 0.8
-  jumpForce: 8.5
   fallMultiplier: 3
   lowJumpMultiplier: 2.5
   climbSpeed: 1
   gravityScale: 1
   animator: {fileID: 9100000, guid: 15e76f0411bc5bb468d371ebb742fa51, type: 2}
+  sprite: {fileID: 6109547833505138898, guid: 96462133916a5a747b9aced028a1812d, type: 3}

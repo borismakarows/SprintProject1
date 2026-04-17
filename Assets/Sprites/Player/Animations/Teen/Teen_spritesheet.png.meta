@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: e77bc006a177ba04dbd14ea4ab7569f4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6929128263499228186
+    second: Teen_spritesheet_0
+  - first:
+      213: 5424050427534781527
+    second: Teen_spritesheet_1
+  - first:
+      213: 3507466777694056523
+    second: Teen_spritesheet_2
+  - first:
+      213: -155065644008185763
+    second: Teen_spritesheet_3
+  - first:
+      213: -1827876745970950989
+    second: Teen_spritesheet_4
+  - first:
+      213: 1429268026813281671
+    second: Teen_spritesheet_5
+  - first:
+      213: -1394924436075736503
+    second: Teen_spritesheet_6
+  - first:
+      213: 9213287042714294089
+    second: Teen_spritesheet_7
+  - first:
+      213: -735341501644797558
+    second: Teen_spritesheet_8
+  - first:
+      213: 221629520357221685
+    second: Teen_spritesheet_9
+  - first:
+      213: 6842423903102703697
+    second: Teen_spritesheet_10
+  - first:
+      213: 6813858594924819511
+    second: Teen_spritesheet_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 60
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Teen_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 527
+        width: 94
+        height: 237
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb52037e8ac6df90800000000000000
+      internalID: -6929128263499228186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 527
+        width: 79
+        height: 234
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c24014029164b40800000000000000
+      internalID: 5424050427534781527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 522
+        width: 79
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4030f173760da030800000000000000
+      internalID: 3507466777694056523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 522
+        width: 79
+        height: 233
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d50660c4e9819ddf0800000000000000
+      internalID: -155065644008185763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 273
+        width: 80
+        height: 238
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc5437b8c312a6e0800000000000000
+      internalID: -1827876745970950989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 273
+        width: 80
+        height: 236
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7857703a2b7c5d310800000000000000
+      internalID: 1429268026813281671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 271
+        width: 85
+        height: 225
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9429133bd9b34ace0800000000000000
+      internalID: -1394924436075736503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 271
+        width: 80
+        height: 244
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 947d1b250cb2cdf70800000000000000
+      internalID: 9213287042714294089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 16
+        width: 104
+        height: 234
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a890cdddcca8bc5f0800000000000000
+      internalID: -735341501644797558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 15
+        width: 84
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 535e1a0efd2631300800000000000000
+      internalID: 221629520357221685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 14
+        width: 85
+        height: 241
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1581413894c25fe50800000000000000
+      internalID: 6842423903102703697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Teen_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 16
+        width: 98
+        height: 234
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7347c3c6a40bf8e50800000000000000
+      internalID: 6813858594924819511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f7d80cbb7d533754191be52a0c8010e9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Teen_spritesheet_0: -6929128263499228186
+      Teen_spritesheet_1: 5424050427534781527
+      Teen_spritesheet_10: 6842423903102703697
+      Teen_spritesheet_11: 6813858594924819511
+      Teen_spritesheet_2: 3507466777694056523
+      Teen_spritesheet_3: -155065644008185763
+      Teen_spritesheet_4: -1827876745970950989
+      Teen_spritesheet_5: 1429268026813281671
+      Teen_spritesheet_6: -1394924436075736503
+      Teen_spritesheet_7: 9213287042714294089
+      Teen_spritesheet_8: -735341501644797558
+      Teen_spritesheet_9: 221629520357221685
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -15,7 +15,7 @@ public class EraStats : ScriptableObject
     public float climbSpeed;
     public float gravityScale;
 
-    [Header("Animation Control")]
+    [Header("Visual")]
     public RuntimeAnimatorController animator;
- 
+    public Sprite sprite;
 }

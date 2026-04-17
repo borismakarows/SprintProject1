@@ -8,4 +8,24 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: AO_TeenEra
   m_Controller: {fileID: 9100000, guid: 15e76f0411bc5bb468d371ebb742fa51, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e18a3f6fbdbe0054b9a11ff1b5db37b3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: daa2c30e7549c6240abfe1114e2fa649, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 78e8470f04a13bc4bbef29e5ce8d07a1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ef2fd1f66144cb24eb32300835fe34b5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4afc1e237668320418b56d693cffa91c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ef2fd1f66144cb24eb32300835fe34b5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a784a476b0382eb4ab0c933871def1b4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e34185818483494ab851152453f61f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cebf4e8844174bd4e9626651c798571b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e34185818483494ab851152453f61f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a7c60318b9ece1c4e85b852f0193ffca, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e34185818483494ab851152453f61f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9b81bac46b26e97498bac5e121b4000d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e34185818483494ab851152453f61f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6b03737eb5ac6924282b597931f9baf5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e34185818483494ab851152453f61f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7dc25513b6b01144e86435935e2c0f4b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4cf6201a4ab521e4a909c392e4806445, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dd293e93d9868914da665170ef3f4928, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2e34185818483494ab851152453f61f9, type: 2}

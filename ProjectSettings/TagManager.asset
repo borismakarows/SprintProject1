@@ -12,6 +12,7 @@ TagManager:
   - Box
   - WalkthroughFloor
   - cloud
+  - Minigame
   layers:
   - Default
   - TransparentFX

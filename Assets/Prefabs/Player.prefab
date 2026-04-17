@@ -192,24 +192,24 @@ MonoBehaviour:
   maxSpeed: 5
   acc: 6
   deacc: 1.5
-  velPow: 0.8
-  jumpForce: 8.5
+  velPow: 1.4
+  jumpForce: 7
   isJumping: 0
-  climbSpeed: 1
+  climbSpeed: 2
   ropeHorizontalSnap: 1.5
   swimSpeed: 3.5
   defaultGravityScale: 1
-  fallMultiplier: 3
-  lowJumpMultiplier: 2.5
+  fallMultiplier: 2
+  lowJumpMultiplier: 1
   debugMode: 1
   groundCheckPos: {fileID: 7160641622592042458}
-  groundCheckRadius: 0.25
+  groundCheckRadius: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
   rb: {fileID: 359158549255087902}
-  animCtr: {fileID: 0}
+  animCtr: {fileID: 9015566950041076430}
   isMoving: 0
 --- !u!114 &6687056716104902971
 MonoBehaviour:
@@ -432,7 +432,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1950790751
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6109547833505138898, guid: 96462133916a5a747b9aced028a1812d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

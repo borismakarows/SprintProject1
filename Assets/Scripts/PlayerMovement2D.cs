@@ -62,18 +62,18 @@ public class PlayerMovement2D : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     bool isTouchingRope;
     bool isClimbing;
-    bool isSwimming;
+    [HideInInspector] public bool isSwimming;
     bool canPush = true;
     
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private AnimationController animCtr;
-    private SpriteRenderer sprite;
+    private SpriteRenderer spriteRenderer;
     
     [Header("Input")]
     [HideInInspector] public bool isMoving;
-    Vector2 moveInput;
+    [HideInInspector] public Vector2 moveInput;
 
 
     #region Get comps.
@@ -81,28 +81,30 @@ public class PlayerMovement2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animCtr = GetComponentInChildren<AnimationController>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         DebugComponents();
+        if (currentRoom == Room.TeenHouse) {SwitchEra(Era.Teen);}
+        else {SwitchEra(Era.Child);}
     }
 
     void OnValidate() => rb = GetComponent<Rigidbody2D>();
     #endregion
 
     #region Unity funcs
-    void Start()
-    {
-        SwitchEra(Era.Child);
-    }
-
     void Update()
     {
         CheckAnyMoveInputs();
         CheckGround();
-        CheckInputState();
     }
+
+    void FixedUpdate()
+    {
+        CheckMoveState();
+    }
+
     #endregion
-    
-   
+
+
     #region  Input
     //Checking for music boxg game
     private void CheckAnyMoveInputs()
@@ -110,7 +112,7 @@ public class PlayerMovement2D : MonoBehaviour
         isMoving = (Mathf.Abs(rb.linearVelocityX) > 0.01f || Mathf.Abs(rb.linearVelocityY) > 0.01f || isJumping) ? true : false;
     }
     
-    private void CheckInputState()
+    private void CheckMoveState()
     {
         if (isClimbing)
         {
@@ -126,7 +128,7 @@ public class PlayerMovement2D : MonoBehaviour
         if (isSwimming) Swim();
         
     }
-
+    #endregion
     #region Input Messages
     //Delegates(messages) from Input
     public void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
@@ -142,7 +144,7 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
-    #endregion
+    
     #endregion
 
     #region Basic Movement
@@ -160,8 +162,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void SpriteFlip()
     {
-        if (moveInput.x > 0) {sprite.flipX = true;}
-        else if (moveInput.x < 0) {sprite.flipX = false;} 
+        if (moveInput.x > 0) {spriteRenderer.flipX = true;}
+        else if (moveInput.x < 0) {spriteRenderer.flipX = false;} 
     }
 
     void Jump(InputValue jumpValue)
@@ -281,6 +283,7 @@ public class PlayerMovement2D : MonoBehaviour
         defaultGravityScale = childStats.gravityScale;
         //Animation
         animCtr.ChangeRunTimeAnimator(childStats.animator);
+        spriteRenderer.sprite = childStats.sprite;
     }
     
         private void SwitchToTeen()
@@ -298,6 +301,7 @@ public class PlayerMovement2D : MonoBehaviour
         defaultGravityScale = teenStats.gravityScale;
         //Animation
         animCtr.ChangeRunTimeAnimator(teenStats.animator);
+        spriteRenderer.sprite = teenStats.sprite;
     }
     
     #endregion
@@ -316,7 +320,7 @@ public class PlayerMovement2D : MonoBehaviour
     private void DebugComponents()
     {
         if (animCtr == null) {Debug.Log("Anim controller is missing!");}
-        if (sprite == null) {Debug.Log("spire render comp. is missing!");}
+        if (spriteRenderer == null) {Debug.Log("spire render comp. is missing!");}
     }
     #endregion
 
@@ -340,6 +344,10 @@ public class PlayerMovement2D : MonoBehaviour
         {
             canPush = false;
             animCtr.PushAnimationOff();
+        }
+        if (collision.CompareTag("Minigame"))
+        {
+            SwitchEra(Era.Child);
         }
         
     }

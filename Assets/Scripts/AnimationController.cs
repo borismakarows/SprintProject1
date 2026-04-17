@@ -29,14 +29,14 @@ public class AnimationController : MonoBehaviour
     {
         UpdateWalkAnimation();
         UpdateJumpAnimation();
+        UpdateSwim();
     }
 
     private void RoomCheck()
     {
         animator.SetBool("InBunnyRoom", playerRef.currentRoom == Room.BunnyPlushie);
         animator.SetBool("InMusicRoom", playerRef.currentRoom == Room.MusicBox);
-        bool freeFall = playerRef.currentRoom == Room.TeenHouse || playerRef.currentRoom == Room.Piranhas;
-        animator.SetBool("FreeFall", freeFall && playerRef.currentEra == Era.Child);
+        animator.SetBool("Swimming", playerRef.currentRoom == Room.Piranhas);
     }
 
     private void UpdateWalkAnimation()
@@ -44,13 +44,19 @@ public class AnimationController : MonoBehaviour
         animator.SetFloat("xVelocityAbs", MathF.Abs(rb.linearVelocityX));
         animator.SetFloat("yVelocity", rb.linearVelocityY);
     }
-
+    
     private void UpdateJumpAnimation()
     {
         RoomCheck();
         animator.SetBool("Ground", playerRef.isGrounded);
         animator.SetBool("Jumping", playerRef.isJumping);
         wasGroundedLastFrame = playerRef.isGrounded;
+    }
+
+    private void UpdateSwim()
+    {
+        int moveInputX = Mathf.RoundToInt(playerRef.moveInput.x);
+        animator.SetInteger("XMoveInput", moveInputX);
     }
 
     public void PushAnimationOn()
