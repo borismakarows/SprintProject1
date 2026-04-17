@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEditor.Tilemaps;
 using UnityEngine;
@@ -17,7 +18,7 @@ public enum Era
     Teen
 }
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D),typeof(PlayerInput))]
 public class PlayerMovement2D : MonoBehaviour
 {
     [Header("Era Information")]
@@ -70,6 +71,8 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private AnimationController animCtr;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] PlayerInput playerInput;
+    [SerializeField] UIManager uIManager;
     
     [Header("Input")]
     [HideInInspector] public bool isMoving;
@@ -82,6 +85,7 @@ public class PlayerMovement2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animCtr = GetComponentInChildren<AnimationController>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        playerInput = GetComponent<PlayerInput>();
         DebugComponents();
         if (currentRoom == Room.TeenHouse) {SwitchEra(Era.Teen);}
         else {SwitchEra(Era.Child);}
@@ -128,6 +132,21 @@ public class PlayerMovement2D : MonoBehaviour
         if (isSwimming) Swim();
         
     }
+
+    public void SwitchToUIInput()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
+        Cursor.visible = true; 
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void SwitchToGameInput()
+    {
+        playerInput.SwitchCurrentActionMap("Player");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     #endregion
     #region Input Messages
     //Delegates(messages) from Input
@@ -141,6 +160,14 @@ public class PlayerMovement2D : MonoBehaviour
         {
             ToggleClimbing(!isClimbing);
             Debug.Log("Climbing Toggled: " + isClimbing);
+        }
+    }
+
+    public void OnPause(InputValue value)
+    {
+        if (value.isPressed && uIManager != null)
+        {
+            uIManager.TogglePause();
         }
     }
 
@@ -321,6 +348,8 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (animCtr == null) {Debug.Log("Anim controller is missing!");}
         if (spriteRenderer == null) {Debug.Log("spire render comp. is missing!");}
+        if (playerInput == null) {Debug.Log("Fuck, no player input");}
+        if (uIManager == null) {Debug.Log("no UI Manager in player script");}
     }
     #endregion
 
