@@ -8,20 +8,19 @@ public class GameStart : MonoBehaviour
     [SerializeField] private Room level_index;
     [SerializeField] private GameObject LevelSpawn;
     [SerializeField] private GameObject reward;
+	[SerializeField] private GameObject reward_UI;
 
     private bool isGamePlayed = false;
     private bool isGameFinished = false;
-    private Transform housePlayer;
+    private Vector3 housePlayer;
     private GameObject player;
+	private PlayerMovement2D playerMovement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        housePlayer = GameObject.FindGameObjectWithTag("Player").transform;
+        housePlayer = GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
-    void Update()
-    {
-    }
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log(collider.gameObject.name + "is now in room");
@@ -31,13 +30,13 @@ public class GameStart : MonoBehaviour
             {
                 Debug.Log("yes its player");
                 player = collider.gameObject;
-                PlayerMovement2D playerMovement = player.GetComponent<PlayerMovement2D>();
+                playerMovement = player.GetComponent<PlayerMovement2D>();
                 if (level != null)
                 {
                     level.SetActive(true);
                     playerMovement.currentEra = Era.Child;
                     playerMovement.currentRoom = level_index;
-                    housePlayer = collider.transform;
+                    housePlayer = collider.gameObject.transform.position;
                     collider.gameObject.transform.position = LevelSpawn.transform.position;
                     isGamePlayed = true;
                 }   
@@ -47,8 +46,12 @@ public class GameStart : MonoBehaviour
     }
     public void gameWon()
     {
+		Debug.Log(housePlayer);
         isGameFinished = true;
-        player.transform.position = housePlayer.transform.position;
-        //UI_Reward.SetActive(true);
+        player = GameObject.FindGameObjectWithTag("Player");
+		player.transform.position = housePlayer;
+        playerMovement.currentEra = Era.Teen;
+        playerMovement.currentRoom = 0;
+        reward_UI.SetActive(true);
     }
 }

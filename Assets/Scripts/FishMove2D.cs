@@ -128,7 +128,7 @@ public class FishMove2D : MonoBehaviour
                         Debug.Log("I see the player directly!");
                         return true;
                     } else {
-                        Debug.Log("Something (a wall) is in the way.");
+                        //Debug.Log("Something (a wall) is in the way.");
                     }
                 }
             }

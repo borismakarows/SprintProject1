@@ -25,4 +25,5 @@ public class UIManager : MonoBehaviour
     {
         cutSceneUI.SetActive(false);
     }
+    
 }

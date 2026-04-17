@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045a4332cbd19e541bb86afe12829a26, type: 3}
   m_Name: Teen
   m_EditorClassIdentifier: Assembly-CSharp::EraStats
-  maxSpeed: 3.5
+  maxSpeed: 3
   acc: 7
   deacc: 3
-  velPow: 0.9
+  velPow: 1.5
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  climbSpeed: 2.5
+  climbSpeed: 3.5
   gravityScale: 1
   animator: {fileID: 22100000, guid: 62f66198d1be66f43be2a4c7685478ab, type: 2}
   sprite: {fileID: -1394924436075736503, guid: e77bc006a177ba04dbd14ea4ab7569f4, type: 3}

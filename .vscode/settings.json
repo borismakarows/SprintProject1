@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "TimelessTreasures.slnx",
+    "dotnet.defaultSolution": "SprintProject1.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
