@@ -8,7 +8,7 @@ public class Reward : MonoBehaviour
     [SerializeField] private bool bunny  = false;
 
     private GameStart gameManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         if (level != null)
@@ -19,7 +19,7 @@ public class Reward : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
+        {   
             gameManager.GameWon();
         }
     }

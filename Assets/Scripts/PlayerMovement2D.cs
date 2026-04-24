@@ -105,7 +105,7 @@ public class PlayerMovement2D : MonoBehaviour
     void FixedUpdate()
     {
         CheckMoveState();
-        if (currentRoom == Room.TeenHouse) {SwitchToTeen();}
+        //if (currentRoom == Room.TeenHouse) {SwitchToTeen();}
     }
 
     #endregion
@@ -319,7 +319,7 @@ public class PlayerMovement2D : MonoBehaviour
         spriteRenderer.sprite = childStats.sprite;
     }
     
-        private void SwitchToTeen()
+    private void SwitchToTeen()
     {
         currentEra = Era.Teen;
         //Movement
@@ -379,10 +379,6 @@ public class PlayerMovement2D : MonoBehaviour
         {
             canPush = false;
             animCtr.PushAnimationOff();
-        }
-        if (collision.CompareTag("Minigame"))
-        {
-            SwitchEra(Era.Child);
         }
         
     }

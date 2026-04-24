@@ -134,6 +134,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2156380909245104645, guid: 62dc0eaf0fc2985a6a49bab6c6f28213, type: 3}
   m_PrefabInstance: {fileID: 5905222989606444146}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &417808243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 807290391386368315, guid: 4f0c5d1458a80689b83476b8c6a3cd0f, type: 3}
+  m_PrefabInstance: {fileID: 3516423757700352957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &673036517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7536600871821311734, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
@@ -251,6 +256,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7089023263578075168, guid: 201639b83b63c20d3b0b619fd3707585, type: 3}
+      propertyPath: level
+      value: 
+      objectReference: {fileID: 417808243}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -832,60 +841,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 581286655978979277, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.20433338
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 581286655978979277, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.20433338
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 581286655978979277, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6811113
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723415388621379421, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2978832876467404631, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 3818791223074876627, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: MaxDistance
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3818791223074876627, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: MinDistance
-      value: 35
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3970747426079269953, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: level
       value: 
       objectReference: {fileID: 1757497390}
-    - target: {fileID: 4007512948904872448, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_Size.y
-      value: 12.837296
-      objectReference: {fileID: 0}
-    - target: {fileID: 4007512948904872448, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_Offset.y
-      value: 34.908188
-      objectReference: {fileID: 0}
-    - target: {fileID: 4058167611460235734, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4058167611460235734, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 4058167611460235734, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4179723922001009209, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.81
-      objectReference: {fileID: 0}
     - target: {fileID: 7566691122064263791, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 107.5
@@ -930,21 +899,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicBox
       objectReference: {fileID: 0}
-    - target: {fileID: 7724448892469570931, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
-      propertyPath: m_TagString
-      value: Minigame
-      objectReference: {fileID: 0}
     - target: {fileID: 8513938989895783028, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.35063624
+      value: 0.3525
       objectReference: {fileID: 0}
     - target: {fileID: 8513938989895783028, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.35063624
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8513938989895783028, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1687874
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513938989895783028, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
