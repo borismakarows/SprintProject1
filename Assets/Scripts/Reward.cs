@@ -16,25 +16,9 @@ public class Reward : MonoBehaviour
             gameManager = level.GetComponent<GameStart>();
         }
     }
-
-    void Update()
-    {
-        if (bunny)
-        {
-            //TODO
-            //while carrots remain -> deactivate
-        }
-    }
-
-    ~Reward()
-    {
-        Debug.Log("Reward Destroyed");
-        gameManager.GameWon();
-    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Player TRIGGERED");
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             gameManager.GameWon();
         }

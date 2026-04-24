@@ -398,7 +398,7 @@ public class PlayerMovement2D : MonoBehaviour
             GameObject[] floors = GameObject.FindGameObjectsWithTag("WalkthroughFloor");
             foreach (GameObject floor in floors)
             {
-                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), floor.GetComponent<Collider2D>(), false);
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), floor.GetComponent<Collider2D>(), false);
             }
         }
 
@@ -435,7 +435,7 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
     #endregion
-    public void StopMovement()
+    public void FreezeMovement()
     {
         rb.linearVelocityY = 0;
         rb.linearVelocityX = 0;

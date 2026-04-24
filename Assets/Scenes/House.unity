@@ -164,11 +164,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4135388704553620728, guid: 4500a52bbae9e66a6b111ee285ca7ae0, type: 3}
   m_PrefabInstance: {fileID: 5999234183335770602}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1064368499 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 807290391386368315, guid: 4f0c5d1458a80689b83476b8c6a3cd0f, type: 3}
-  m_PrefabInstance: {fileID: 3516423757700352957}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1092842947 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3587770824906205468, guid: 201639b83b63c20d3b0b619fd3707585, type: 3}
@@ -256,10 +251,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7089023263578075168, guid: 201639b83b63c20d3b0b619fd3707585, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 1064368499}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -602,6 +593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeaShell
       objectReference: {fileID: 0}
+    - target: {fileID: 2156380909245104645, guid: 62dc0eaf0fc2985a6a49bab6c6f28213, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3112484051033196356, guid: 62dc0eaf0fc2985a6a49bab6c6f28213, type: 3}
       propertyPath: player
       value: 
@@ -934,6 +929,10 @@ PrefabInstance:
     - target: {fileID: 7724448892469570931, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_Name
       value: MusicBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724448892469570931, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
+      propertyPath: m_TagString
+      value: Minigame
       objectReference: {fileID: 0}
     - target: {fileID: 8513938989895783028, guid: df35365b606f0c95ab675aab07cad17e, type: 3}
       propertyPath: m_LocalScale.x

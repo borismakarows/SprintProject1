@@ -42,11 +42,10 @@ public class GameStart : MonoBehaviour
     
     public void GameWon()
     {
-		Debug.Log(housePlayer);
         isGameFinished = true;
 		player.transform.position = housePlayer;
         playerMovement.currentRoom = Room.TeenHouse;
-        playerMovement.StopMovement();
+        playerMovement.FreezeMovement();
         playerMovement.SwitchEra(Era.Teen);
         reward_UI.SetActive(true);
     }
